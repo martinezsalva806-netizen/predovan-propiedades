@@ -9,11 +9,11 @@ import { BrandLogo } from '@/components/brand-logo'
 import { cn } from '@/lib/utils'
 
 const links = [
-  { href: '#destacadas', label: 'Propiedades' },
-  { href: '#tasacion', label: 'Tasación' },
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#blog', label: 'Blog' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/propiedades', label: 'Propiedades' },
+  { href: '/#tasacion', label: 'Tasación' },
+  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/#testimonios', label: 'Testimonios' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
 
 
@@ -27,7 +27,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/8 bg-coal-900/75 backdrop-blur-xl dark:bg-coal-900/70">
       <div className="container-grid flex items-center justify-between py-4">
-        <Link href="#inicio" className="group flex items-center gap-3">
+        <Link href="/#inicio" className="group flex items-center gap-3">
           <BrandLogo compact />
         </Link>
 

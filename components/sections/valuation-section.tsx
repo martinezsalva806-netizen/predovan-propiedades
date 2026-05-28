@@ -100,16 +100,36 @@ export function ValuationSection() {
               {step === 3 && (
                 <motion.div key="s3" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} className="space-y-4">
                   <h3 className="text-lg font-semibold">Paso 3 · Características</h3>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <Input type="number" value={totalArea} onChange={(e) => setTotalArea(Number(e.target.value))} placeholder="m² totales" />
-                    <Input type="number" value={coveredArea} onChange={(e) => setCoveredArea(Number(e.target.value))} placeholder="m² cubiertos" />
-                    <Input type="number" value={floorCount} onChange={(e) => setFloorCount(Number(e.target.value))} placeholder="Altura / piso" />
-                    <Input type="number" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))} placeholder="Dormitorios" />
-                    <Input type="number" value={bathrooms} onChange={(e) => setBathrooms(Number(e.target.value))} placeholder="Baños" />
-                    <Input type="number" value={garageCount} onChange={(e) => setGarageCount(Number(e.target.value))} placeholder="Cocheras" />
-                    <Input type="number" value={age} onChange={(e) => setAge(Number(e.target.value))} placeholder="Antigüedad (años)" />
-                    <div className="grid gap-3 sm:col-span-2 sm:grid-cols-2">
-                      <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={pool} onChange={(e) => setPool(e.target.checked)} /> Pileta</label>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="space-y-2 sm:col-span-2">
+                      <span className="text-sm text-white/70">Metros cuadrados totales del terreno</span>
+                      <Input type="number" value={totalArea} onChange={(e) => setTotalArea(Number(e.target.value))} placeholder="Ej: 250" />
+                    </label>
+                    <label className="space-y-2">
+                      <span className="text-sm text-white/70">Metros cuadrados cubiertos</span>
+                      <Input type="number" value={coveredArea} onChange={(e) => setCoveredArea(Number(e.target.value))} placeholder="Ej: 180" />
+                    </label>
+                    <label className="space-y-2">
+                      <span className="text-sm text-white/70">Cantidad de dormitorios</span>
+                      <Input type="number" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))} placeholder="Ej: 3" />
+                    </label>
+                    <label className="space-y-2">
+                      <span className="text-sm text-white/70">Cantidad de baños</span>
+                      <Input type="number" value={bathrooms} onChange={(e) => setBathrooms(Number(e.target.value))} placeholder="Ej: 2" />
+                    </label>
+                    <label className="space-y-2">
+                      <span className="text-sm text-white/70">Cochera (sí/no y cantidad)</span>
+                      <Input type="number" value={garageCount} onChange={(e) => setGarageCount(Number(e.target.value))} placeholder="Ej: 2" />
+                    </label>
+                    <label className="space-y-2">
+                      <span className="text-sm text-white/70">Antigüedad en años</span>
+                      <Input type="number" value={age} onChange={(e) => setAge(Number(e.target.value))} placeholder="Ej: 12" />
+                    </label>
+                    <label className="space-y-2">
+                      <span className="text-sm text-white/70">Pileta (sí/no)</span>
+                      <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={pool} onChange={(e) => setPool(e.target.checked)} /> Tiene pileta</label>
+                    </label>
+                    <div className="grid gap-3 sm:grid-cols-2 sm:col-span-2">
                       <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={balcony} onChange={(e) => setBalcony(e.target.checked)} /> Balcón / terraza</label>
                       <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={grill} onChange={(e) => setGrill(e.target.checked)} /> Parrilla</label>
                       <Select value={orientation} onChange={(e) => setOrientation(e.target.value as 'frente' | 'contrafrente')}>

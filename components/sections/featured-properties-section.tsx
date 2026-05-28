@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Bath, BedDouble, Ruler, MapPin, ArrowRight, Filter } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { currency } from '@/lib/utils'
@@ -49,31 +48,33 @@ export function FeaturedPropertiesSection() {
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
             >
-              <Card className="group overflow-hidden border-white/10 bg-white/6">
-                <div className="relative h-56 overflow-hidden">
-                  <Image src={item.gallery[0]} alt={item.title} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 1280px) 100vw, 25vw" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  <div className="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur-xl">{item.market === 'venta' ? 'Venta' : 'Alquiler'}</div>
-                  {item.price && <div className="absolute bottom-4 left-4 rounded-2xl border border-white/10 bg-black/40 px-4 py-3 backdrop-blur-xl">
-                    <div className="text-xs uppercase tracking-[0.24em] text-white/55">Precio</div>
-                    <div className="font-serif text-2xl text-white">{item.price}</div>
-                  </div>}
-                </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                  <div className="mt-3 flex items-center gap-2 text-sm text-white/65"><MapPin className="h-4 w-4 text-brand-400" />{item.address}</div>
-                  <div className="mt-5 grid grid-cols-3 gap-3 text-sm text-white/75">
-                    <div className="rounded-2xl bg-white/6 p-3"><Ruler className="mb-2 h-4 w-4 text-brand-400" />{item.area || '—'}</div>
-                    <div className="rounded-2xl bg-white/6 p-3"><BedDouble className="mb-2 h-4 w-4 text-brand-400" />{item.rooms || '—'}</div>
-                    <div className="rounded-2xl bg-white/6 p-3"><Bath className="mb-2 h-4 w-4 text-brand-400" />Detalles</div>
+              <Link href={`/propiedades/${item.slug}`} className="group block">
+                <Card className="overflow-hidden border-white/10 bg-white/6 transition duration-300 group-hover:-translate-y-1 group-hover:border-brand-500/30 group-hover:shadow-2xl group-hover:shadow-brand-500/10">
+                  <div className="relative h-56 overflow-hidden">
+                    <Image src={item.gallery[0]} alt={item.title} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 1280px) 100vw, 25vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                    <div className="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur-xl">{item.market === 'venta' ? 'Venta' : 'Alquiler'}</div>
+                    {item.price && <div className="absolute bottom-4 left-4 rounded-2xl border border-white/10 bg-black/40 px-4 py-3 backdrop-blur-xl">
+                      <div className="text-xs uppercase tracking-[0.24em] text-white/55">Precio</div>
+                      <div className="font-serif text-2xl text-white">{item.price}</div>
+                    </div>}
                   </div>
-                  <div className="mt-4 flex gap-2">
-                    <Button variant="ghost" className="w-full justify-between border border-white/10 bg-white/5 text-white hover:bg-white/10" asChild>
-                      <Link href={`/propiedades/${item.slug}`}>Ver detalle <ArrowRight className="h-4 w-4" /></Link>
-                    </Button>
+                  <div className="p-5">
+                    <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                    <div className="mt-3 flex items-center gap-2 text-sm text-white/65"><MapPin className="h-4 w-4 text-brand-400" />{item.address}</div>
+                    <div className="mt-5 grid grid-cols-3 gap-3 text-sm text-white/75">
+                      <div className="rounded-2xl bg-white/6 p-3"><Ruler className="mb-2 h-4 w-4 text-brand-400" />{item.area || '—'}</div>
+                      <div className="rounded-2xl bg-white/6 p-3"><BedDouble className="mb-2 h-4 w-4 text-brand-400" />{item.rooms || '—'}</div>
+                      <div className="rounded-2xl bg-white/6 p-3"><Bath className="mb-2 h-4 w-4 text-brand-400" />Detalles</div>
+                    </div>
+                    <div className="mt-4 flex gap-2">
+                      <span className="inline-flex w-full items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition group-hover:bg-white/10">
+                        Ver detalle <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             </motion.article>
           ))}
         </div>

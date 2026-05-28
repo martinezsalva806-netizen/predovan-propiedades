@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, BadgeInfo } from 'lucide-react'
+import { BadgeInfo } from 'lucide-react'
 
 export function PropertiesIntroBanner() {
   return (
@@ -15,10 +15,10 @@ export function PropertiesIntroBanner() {
               </p>
             </div>
           </div>
-          <Link href="#destacadas" className="inline-flex items-center justify-center gap-2 rounded-full border border-coal-300/30 bg-white/60 px-5 py-3 text-sm font-medium text-coal-900 transition hover:-translate-y-0.5 hover:bg-white/80 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10">
+          <Link href="/propiedades" className="inline-flex items-center justify-center gap-2 rounded-full border border-coal-300/30 bg-white/60 px-5 py-3 text-sm font-medium text-coal-900 transition hover:-translate-y-0.5 hover:bg-white/80 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10">
             Ver catálogo
-            <ArrowRight className="h-4 w-4" />
           </Link>
+
         </div>
       </div>
     </section>

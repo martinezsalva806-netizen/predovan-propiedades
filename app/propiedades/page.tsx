@@ -23,19 +23,21 @@ export default function PropertiesPage() {
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {featuredProperties.map((property) => (
-            <Card key={property.slug} className="overflow-hidden border-white/10 bg-white/6 text-white">
-              <div className="relative h-56 bg-[linear-gradient(135deg,rgba(225,34,34,0.18),rgba(255,255,255,0.02))]">
-                <img src={property.gallery[0]} alt={property.title} className="h-full w-full object-cover" />
-              </div>
-              <div className="p-5">
-                <div className="text-xs uppercase tracking-[0.22em] text-white/50">{property.market}</div>
-                <h2 className="mt-2 text-xl font-semibold">{property.title}</h2>
-                <div className="mt-2 flex items-center gap-2 text-sm text-white/65"><MapPin className="h-4 w-4 text-brand-400" />{property.address}</div>
-                <Link href={`/propiedades/${property.slug}`} className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10">
-                  Ver ficha
-                </Link>
-              </div>
-            </Card>
+            <Link key={property.slug} href={`/propiedades/${property.slug}`} className="group block">
+              <Card className="overflow-hidden border-white/10 bg-white/6 text-white transition duration-300 group-hover:-translate-y-1 group-hover:border-brand-500/30 group-hover:shadow-2xl group-hover:shadow-brand-500/10">
+                <div className="relative h-56 bg-[linear-gradient(135deg,rgba(225,34,34,0.18),rgba(255,255,255,0.02))]">
+                  <img src={property.gallery[0]} alt={property.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-5">
+                  <div className="text-xs uppercase tracking-[0.22em] text-white/50">{property.market}</div>
+                  <h2 className="mt-2 text-xl font-semibold">{property.title}</h2>
+                  <div className="mt-2 flex items-center gap-2 text-sm text-white/65"><MapPin className="h-4 w-4 text-brand-400" />{property.address}</div>
+                  <span className="mt-5 inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition group-hover:bg-white/10">
+                    Ver ficha
+                  </span>
+                </div>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>

@@ -1,8 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ChevronDown, Search, Sparkles } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select } from '@/components/ui/select'
 import { heroStats, siteData, quickFilters } from '@/lib/data'
@@ -88,9 +88,9 @@ export function HeroSection() {
                 <Input placeholder="Palabras clave" />
               </div>
 
-              <Button variant="accent" className="mt-4 w-full text-base" type="button">
+              <Link href="/propiedades" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-base font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
                 <Search className="h-4 w-4" /> Buscar propiedades
-              </Button>
+              </Link>
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {quickFilters.map((item, index) => (

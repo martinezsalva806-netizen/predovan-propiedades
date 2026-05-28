@@ -66,19 +66,21 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
             <h2 className="font-serif text-3xl">Propiedades similares</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {related.map((item) => (
-                <Card key={item.slug} className="overflow-hidden border-white/10 bg-white/6 text-white">
-                  <div className="relative h-44">
-                    <Image src={item.gallery[0]} alt={item.title} fill className="object-cover" />
-                  </div>
-                  <div className="p-4">
-                    <div className="text-xs uppercase tracking-[0.22em] text-white/50">{item.market}</div>
-                    <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-sm text-white/65">{item.address}</p>
-                    <Link href={`/propiedades/${item.slug}`} className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10">
-                      Ver ficha
-                    </Link>
-                  </div>
-                </Card>
+                <Link key={item.slug} href={`/propiedades/${item.slug}`} className="group block">
+                  <Card className="overflow-hidden border-white/10 bg-white/6 text-white transition duration-300 group-hover:-translate-y-1 group-hover:border-brand-500/30 group-hover:shadow-2xl group-hover:shadow-brand-500/10">
+                    <div className="relative h-44">
+                      <Image src={item.gallery[0]} alt={item.title} fill className="object-cover transition duration-700 group-hover:scale-105" />
+                    </div>
+                    <div className="p-4">
+                      <div className="text-xs uppercase tracking-[0.22em] text-white/50">{item.market}</div>
+                      <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
+                      <p className="mt-2 text-sm text-white/65">{item.address}</p>
+                      <span className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition group-hover:bg-white/10">
+                        Ver ficha
+                      </span>
+                    </div>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>

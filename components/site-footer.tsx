@@ -4,12 +4,12 @@ import { Instagram, Phone, MapPin, Clock3 } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 
 const footerLinks = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#destacadas', label: 'Propiedades' },
-  { href: '#tasacion', label: 'Tasación' },
-  { href: '#nosotros', label: 'Quiénes somos' },
-  { href: '#blog', label: 'Blog' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/#inicio', label: 'Inicio' },
+  { href: '/propiedades', label: 'Propiedades' },
+  { href: '/#tasacion', label: 'Tasación' },
+  { href: '/#nosotros', label: 'Quiénes somos' },
+  { href: '/#testimonios', label: 'Testimonios' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
 
 export function SiteFooter() {

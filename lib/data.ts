@@ -4,7 +4,7 @@ export const siteData = {
   address: '13 n636 e/ Plaza Paso y 45, La Plata, Buenos Aires 1900',
   hours: 'Lunes a Viernes de 9:00 a 16:00hs',
   instagram: '@predovanpropiedades',
-  whatsapp: '+5492213533555',
+  whatsapp: '+54 9 221 353 3555',
   whatsappDisplay: '+54 9 221 353 3555',
   whatsappLink: 'https://wa.me/5492213533555',
 }

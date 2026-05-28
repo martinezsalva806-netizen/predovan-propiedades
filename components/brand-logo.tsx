@@ -3,10 +3,10 @@ import { cn } from '@/lib/utils'
 export function BrandLogo({ className, compact = false }: { className?: string; compact?: boolean }) {
   return (
     <div className={cn('flex items-center gap-3', className)}>
-      <div className="relative flex h-11 w-11 items-center justify-center rounded-[18px] bg-[linear-gradient(135deg,#e12222_0%,#7b1313_100%)] shadow-lg shadow-brand-500/25 ring-1 ring-white/10">
-        <svg viewBox="0 0 64 64" className="h-9 w-9 text-white" aria-hidden="true">
-          <path d="M21 52V12h18.5c8.5 0 14.5 5.1 14.5 13 0 5.9-3.4 10.2-8.8 12.1L56 52H44.7l-8.3-12H31v12H21Zm10-21h7.6c3.9 0 6.8-1.9 6.8-5.8 0-4.2-2.9-5.8-6.8-5.8H31V31Z" fill="currentColor"/>
-          <path d="M14 18l7-6 11 9-2.7 3.2L21 19.4 16.2 23 14 18Zm36 0-7-6-11 9 2.7 3.2L43 19.4 47.8 23 50 18Z" fill="#ffffff" opacity="0.92"/>
+      <div className="relative flex h-11 w-11 items-center justify-center">
+        <svg viewBox="0 0 64 64" className="h-11 w-11 drop-shadow-[0_8px_18px_rgba(225,34,34,0.25)]" aria-hidden="true">
+          <path d="M32 4 58 20.5 49 60H15L6 20.5 32 4Z" fill="#cc0000" />
+          <path d="M24 50V14h17.4c8.3 0 13.6 4.8 13.6 12 0 5.1-2.8 8.9-7.4 10.7L56 50H46l-8-11.5h-5.4V50H24Zm8-19.4h7.1c3.8 0 6.1-1.7 6.1-4.7 0-3.2-2.2-4.7-6.1-4.7H32v9.4Z" fill="#ffffff" />
         </svg>
       </div>
       {!compact && (
