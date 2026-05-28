@@ -93,7 +93,14 @@ export function ValuationSection() {
               {step === 2 && (
                 <motion.div key="s2" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} className="space-y-4">
                   <h3 className="text-lg font-semibold">Paso 2 · Ubicación</h3>
-                  <Select value={zone} onChange={(e) => setZone(e.target.value)}>{zones.map((z) => <option key={z}>{z}</option>)}</Select>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {zones.map((z) => (
+                      <button key={z} onClick={() => setZone(z)} className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition ${zone === z ? 'border-brand-500 bg-brand-500/15 text-white' : 'border-white/10 bg-white/5 text-white/75 hover:bg-white/8 hover:text-white'}`}>
+                        <MapPinned className="h-4 w-4 text-brand-400" />
+                        {z}
+                      </button>
+                    ))}
+                  </div>
                   <p className="text-sm text-white/55">Elegí la zona de La Plata para afinar la referencia por m².</p>
                 </motion.div>
               )}
