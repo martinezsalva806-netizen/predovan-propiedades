@@ -50,9 +50,9 @@ export function SiteHeader() {
             {mounted && theme === 'dark' ? <SunMedium className="h-4 w-4" /> : <MoonStar className="h-4 w-4" />}
             <span className="hidden sm:inline">{mounted && theme === 'dark' ? 'Claro' : 'Oscuro'}</span>
           </Button>
-          <Link href="https://wa.me/5492213533555" target="_blank" rel="noreferrer" className="hidden md:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
+          <a href="https://wa.me/542213503355?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20consultar%20sobre%20una%20propiedad." target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
             WhatsApp
-          </Link>
+          </a>
           <button className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Abrir menú">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

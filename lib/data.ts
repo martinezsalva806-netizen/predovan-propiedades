@@ -4,9 +4,9 @@ export const siteData = {
   address: '13 n636 e/ Plaza Paso y 45, La Plata, Buenos Aires 1900',
   hours: 'Lunes a Viernes de 9:00 a 16:00hs',
   instagram: '@predovanpropiedades',
-  whatsapp: '+54 9 221 353 3555',
-  whatsappDisplay: '+54 9 221 353 3555',
-  whatsappLink: 'https://wa.me/5492213533555',
+  whatsapp: '+54 221 350 3355',
+  whatsappDisplay: '221 350 3355',
+  whatsappLink: 'https://wa.me/542213503355',
 }
 
 export const heroStats = [
@@ -20,7 +20,7 @@ export const quickFilters = ['Venta', 'Alquiler', 'Emprendimientos'] as const
 export { properties as featuredProperties } from './properties'
 export { propertyBySlug, similarProperties } from './properties'
 
-export const whatsappQuickMessage = (subject: string) => `https://wa.me/5492213533555?text=${encodeURIComponent(`Hola! Quiero consultar sobre ${subject}.`)}`
+export const whatsappQuickMessage = (subject: string) => `https://wa.me/542213503355?text=${encodeURIComponent(`Hola! Quiero consultar sobre ${subject}.`)}`
 
 export const blogPosts = [
   {
