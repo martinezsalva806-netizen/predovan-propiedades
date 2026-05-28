@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { siteData } from '@/lib/data'
 import { Instagram, Phone, MapPin, Clock3 } from 'lucide-react'
+import { BrandLogo } from '@/components/brand-logo'
 
 const footerLinks = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#destacadas', label: 'Propiedades' },
   { href: '#tasacion', label: 'Tasación' },
-  { href: '#publica', label: 'Publicá tu propiedad' },
   { href: '#nosotros', label: 'Quiénes somos' },
   { href: '#blog', label: 'Blog' },
   { href: '#contacto', label: 'Contacto' },
@@ -19,11 +19,8 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-[1.3fr_0.9fr_1fr]">
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-800 font-serif text-2xl">P</div>
-              <div>
-                <div className="text-lg font-semibold">Predovan Propiedades</div>
-                <div className="text-sm text-white/55">Real Estate · La Plata</div>
-              </div>
+              <BrandLogo compact />
+              <div className="text-sm text-white/55">Real Estate · La Plata</div>
             </div>
             <p className="max-w-xl text-sm leading-6 text-white/70">
               Experiencia digital premium para vender, alquilar, tasar y publicar propiedades con una presentación seria, moderna y confiable.
@@ -34,7 +31,7 @@ export function SiteFooter() {
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-white/70">Secciones</h3>
             <div className="grid grid-cols-2 gap-2">
               {footerLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="rounded-full px-3 py-2 text-sm text-white/70 transition hover:bg-white/8 hover:text-white">
+                <Link key={link.href} href={link.href} className="rounded-full px-3 py-2 text-sm text-white/70 transition hover:bg-white/8 hover:text-white text-left">
                   {link.label}
                 </Link>
               ))}

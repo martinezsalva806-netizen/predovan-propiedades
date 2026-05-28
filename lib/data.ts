@@ -1,11 +1,12 @@
 export const siteData = {
   name: 'Predovan Propiedades',
+  founder: 'Fernando Predovan',
   address: '13 n636 e/ Plaza Paso y 45, La Plata, Buenos Aires 1900',
   hours: 'Lunes a Viernes de 9:00 a 16:00hs',
   instagram: '@predovanpropiedades',
   whatsapp: '+5492213533555',
-  whatsappDisplay: '+54 9 221 353-3555',
-  whatsappLink: 'https://wa.me/5492213533555?text=Hola!%20Vi%20su%20pagina%20web%20y%20me%20gustaria%20consultar%20sobre%20una%20propiedad',
+  whatsappDisplay: '+54 9 221 353 3555',
+  whatsappLink: 'https://wa.me/5492213533555',
 }
 
 export const heroStats = [
@@ -16,52 +17,10 @@ export const heroStats = [
 
 export const quickFilters = ['Venta', 'Alquiler', 'Emprendimientos'] as const
 
-export const featuredProperties = [
-  {
-    id: 1,
-    title: 'Casa moderna con jardín y pileta',
-    price: 285000,
-    location: 'Gonnet, La Plata',
-    area: '210 m²',
-    bedrooms: 4,
-    bathrooms: 3,
-    status: 'Venta',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 2,
-    title: 'Departamento luminoso con vista abierta',
-    price: 142000,
-    location: 'Centro, La Plata',
-    area: '88 m²',
-    bedrooms: 2,
-    bathrooms: 2,
-    status: 'Alquiler',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 3,
-    title: 'Emprendimiento premium en pozo',
-    price: 96000,
-    location: 'City Bell, La Plata',
-    area: '64 m²',
-    bedrooms: 1,
-    bathrooms: 1,
-    status: 'Emprendimientos',
-    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 4,
-    title: 'Local comercial con frente vidriado',
-    price: 180000,
-    location: 'Barrio Norte, La Plata',
-    area: '130 m²',
-    bedrooms: 0,
-    bathrooms: 2,
-    status: 'Venta',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80',
-  }
-]
+export { properties as featuredProperties } from './properties'
+export { propertyBySlug, similarProperties } from './properties'
+
+export const whatsappQuickMessage = (subject: string) => `https://wa.me/5492213533555?text=${encodeURIComponent(`Hola! Quiero consultar sobre ${subject}.`)}`
 
 export const blogPosts = [
   {

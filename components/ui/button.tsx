@@ -1,17 +1,19 @@
+'use client'
+
+import { cloneElement, isValidElement, type ButtonHTMLAttributes, type ReactElement, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
-import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 
 type BaseProps = {
   variant?: 'default' | 'secondary' | 'ghost' | 'outline' | 'accent'
   size?: 'default' | 'sm' | 'lg'
   className?: string
+  children?: ReactNode
 }
 
 type ButtonProps = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & { asChild?: false }
-type LinkProps = BaseProps & AnchorHTMLAttributes<HTMLAnchorElement> & { asChild: true; href: string }
+type ChildProps = BaseProps & { asChild: true; children: ReactElement }
 
-export function Button(props: ButtonProps | LinkProps) {
+export function Button(props: ButtonProps | ChildProps) {
   const { className, variant = 'default', size = 'default' } = props as BaseProps
   const base = 'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'
   const variants = {
@@ -29,10 +31,13 @@ export function Button(props: ButtonProps | LinkProps) {
   const classes = cn(base, variants[variant], sizes[size], className)
 
   if ('asChild' in props && props.asChild) {
-    const { asChild, ...linkProps } = props
-    return <Link className={classes} {...linkProps} />
+    const child = props.children
+    if (!isValidElement(child)) return null
+    return cloneElement(child, {
+      className: cn(classes, child.props.className),
+    })
   }
 
-  const { asChild, ...buttonProps } = props as ButtonProps
-  return <button className={classes} {...buttonProps} />
+  const { asChild, children, ...buttonProps } = props as ButtonProps
+  return <button className={classes} {...buttonProps}>{children}</button>
 }

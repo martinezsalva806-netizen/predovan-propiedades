@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Home, MapPinned, Ruler, BadgeCheck, HeartPulse, CarFront, Waves, Sparkles, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, Home, MapPinned, BadgeCheck, HeartPulse, CarFront, Waves, Sparkles, ArrowUpRight, Building2, Layers3, DoorOpen, Bath, Trees, Hotel, View, CookingPot } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -21,24 +21,41 @@ const types = [
 
 const conditions = ['a estrenar', 'excelente', 'bueno', 'regular', 'a reciclar'] as const
 
+const fields = [
+  { icon: Building2, label: 'm² totales' },
+  { icon: Layers3, label: 'm² cubiertos' },
+  { icon: Hotel, label: 'Altura / piso' },
+  { icon: DoorOpen, label: 'Dormitorios' },
+  { icon: Bath, label: 'Baños' },
+  { icon: CarFront, label: 'Cochera' },
+  { icon: Waves, label: 'Pileta' },
+  { icon: Trees, label: 'Antigüedad' },
+  { icon: View, label: 'Orientación' },
+  { icon: CookingPot, label: 'Balcón / terraza / parrilla' },
+] as const
+
 export function ValuationSection() {
   const [step, setStep] = useState(1)
   const [type, setType] = useState<'casa' | 'depto' | 'terreno' | 'local' | 'oficina'>('casa')
   const [zone, setZone] = useState('Centro')
   const [totalArea, setTotalArea] = useState(150)
   const [coveredArea, setCoveredArea] = useState(120)
+  const [floorCount, setFloorCount] = useState(0)
   const [bedrooms, setBedrooms] = useState(3)
   const [bathrooms, setBathrooms] = useState(2)
-  const [age, setAge] = useState(10)
-  const [garage, setGarage] = useState(true)
+  const [garageCount, setGarageCount] = useState(1)
   const [pool, setPool] = useState(false)
+  const [age, setAge] = useState(10)
   const [condition, setCondition] = useState<'a estrenar' | 'excelente' | 'bueno' | 'regular' | 'a reciclar'>('excelente')
+  const [orientation, setOrientation] = useState<'frente' | 'contrafrente'>('frente')
+  const [balcony, setBalcony] = useState(true)
+  const [grill, setGrill] = useState(false)
 
-  const result = useMemo(() => calculateValuation({ type, zone, totalArea, coveredArea, bedrooms, bathrooms, age, garage, pool, condition }), [type, zone, totalArea, coveredArea, bedrooms, bathrooms, age, garage, pool, condition])
+  const result = useMemo(() => calculateValuation({ type, zone, totalArea, coveredArea, floorCount, bedrooms, bathrooms, garageCount, pool, age, condition, orientation, balcony, grill }), [type, zone, totalArea, coveredArea, floorCount, bedrooms, bathrooms, garageCount, pool, age, condition, orientation, balcony, grill])
 
   const next = () => setStep((s) => Math.min(s + 1, 5))
   const back = () => setStep((s) => Math.max(s - 1, 1))
-  const whatsappLink = `${siteData.whatsappLink}&text=${encodeURIComponent(`Hola! Me gustaría solicitar una tasación profesional gratuita para una propiedad tipo ${type} en ${zone}.`)}`
+  const whatsappLink = `${siteData.whatsappLink}?text=${encodeURIComponent(`Hola! Me gustaría solicitar una tasación profesional gratuita para una propiedad tipo ${type} en ${zone}.`)}`
 
   return (
     <section id="tasacion" className="relative overflow-hidden bg-[linear-gradient(180deg,#0f1318_0%,#0b0e12_100%)] py-20 text-white">
@@ -51,7 +68,7 @@ export function ValuationSection() {
 
           <Card className="mt-8 border-white/10 bg-white/6 p-4 sm:p-6">
             <div className="mb-6 flex flex-wrap gap-2">
-              {[1,2,3,4,5].map((n) => (
+              {[1, 2, 3, 4, 5].map((n) => (
                 <div key={n} className={`flex h-10 w-10 items-center justify-center rounded-full border text-sm ${step >= n ? 'border-brand-500 bg-brand-500 text-white' : 'border-white/10 bg-white/5 text-white/50'}`}>{n}</div>
               ))}
             </div>
@@ -86,16 +103,20 @@ export function ValuationSection() {
                   <div className="grid gap-3 sm:grid-cols-2">
                     <Input type="number" value={totalArea} onChange={(e) => setTotalArea(Number(e.target.value))} placeholder="m² totales" />
                     <Input type="number" value={coveredArea} onChange={(e) => setCoveredArea(Number(e.target.value))} placeholder="m² cubiertos" />
+                    <Input type="number" value={floorCount} onChange={(e) => setFloorCount(Number(e.target.value))} placeholder="Altura / piso" />
                     <Input type="number" value={bedrooms} onChange={(e) => setBedrooms(Number(e.target.value))} placeholder="Dormitorios" />
                     <Input type="number" value={bathrooms} onChange={(e) => setBathrooms(Number(e.target.value))} placeholder="Baños" />
+                    <Input type="number" value={garageCount} onChange={(e) => setGarageCount(Number(e.target.value))} placeholder="Cocheras" />
                     <Input type="number" value={age} onChange={(e) => setAge(Number(e.target.value))} placeholder="Antigüedad (años)" />
-                    <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm">
-                      <input type="checkbox" checked={garage} onChange={(e) => setGarage(e.target.checked)} /> Cochera
-                    </label>
-                    <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm">
-                      <input type="checkbox" checked={pool} onChange={(e) => setPool(e.target.checked)} /> Pileta
-                    </label>
-                    <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/60">Superficie cubierta + amenities ajustan el estimado.</div>
+                    <div className="grid gap-3 sm:col-span-2 sm:grid-cols-2">
+                      <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={pool} onChange={(e) => setPool(e.target.checked)} /> Pileta</label>
+                      <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={balcony} onChange={(e) => setBalcony(e.target.checked)} /> Balcón / terraza</label>
+                      <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"><input type="checkbox" checked={grill} onChange={(e) => setGrill(e.target.checked)} /> Parrilla</label>
+                      <Select value={orientation} onChange={(e) => setOrientation(e.target.value as 'frente' | 'contrafrente')}>
+                        <option value="frente">Frente</option>
+                        <option value="contrafrente">Contrafrente</option>
+                      </Select>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -119,6 +140,9 @@ export function ValuationSection() {
                       <div className="rounded-2xl bg-white/6 p-4"><div className="text-xs text-white/55">Estimado</div><div className="text-2xl font-semibold">{currency(result.estimatedValue)}</div></div>
                       <div className="rounded-2xl bg-white/6 p-4"><div className="text-xs text-white/55">Rango bajo</div><div className="text-2xl font-semibold">{currency(result.low)}</div></div>
                       <div className="rounded-2xl bg-white/6 p-4"><div className="text-xs text-white/55">Rango alto</div><div className="text-2xl font-semibold">{currency(result.high)}</div></div>
+                    </div>
+                    <div className="mt-4 rounded-2xl border border-white/10 bg-white/6 p-4 text-sm text-white/70">
+                      Comparables de la zona: {currency(result.comparableLow)} a {currency(result.comparableHigh)} por m².
                     </div>
                     <Button variant="accent" className="mt-6 w-full sm:w-auto" onClick={() => window.open(whatsappLink, '_blank', 'noopener,noreferrer')}>
                       Solicitar tasación profesional gratuita <ArrowUpRight className="h-4 w-4" />

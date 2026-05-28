@@ -1,21 +1,24 @@
 import { HeroSection } from '@/components/sections/hero-section'
 import { FeaturedPropertiesSection } from '@/components/sections/featured-properties-section'
 import { ValuationSection } from '@/components/sections/valuation-section'
-import { PublishPropertySection } from '@/components/sections/publish-property-section'
 import { AboutSection } from '@/components/sections/about-section'
 import { BlogSection } from '@/components/sections/blog-section'
 import { ContactSection } from '@/components/sections/contact-section'
 import { siteData } from '@/lib/data'
+import { WhatsAppBanner } from '@/components/whatsapp-banner'
+import { PropertiesIntroBanner } from '@/components/properties-intro-banner'
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
+      <PropertiesIntroBanner />
       <FeaturedPropertiesSection />
+      <WhatsAppBanner />
       <ValuationSection />
-      <PublishPropertySection />
       <AboutSection />
       <BlogSection />
+      <WhatsAppBanner compact />
       <ContactSection />
 
       <script

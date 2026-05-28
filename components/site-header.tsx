@@ -5,16 +5,17 @@ import { MoonStar, SunMedium, Menu, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { BrandLogo } from '@/components/brand-logo'
 import { cn } from '@/lib/utils'
 
 const links = [
   { href: '#destacadas', label: 'Propiedades' },
   { href: '#tasacion', label: 'Tasación' },
-  { href: '#publica', label: 'Publicá' },
   { href: '#nosotros', label: 'Nosotros' },
   { href: '#blog', label: 'Blog' },
   { href: '#contacto', label: 'Contacto' },
 ]
+
 
 export function SiteHeader() {
   const { theme, setTheme } = useTheme()
@@ -27,13 +28,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/8 bg-coal-900/75 backdrop-blur-xl dark:bg-coal-900/70">
       <div className="container-grid flex items-center justify-between py-4">
         <Link href="#inicio" className="group flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-800 text-white shadow-lg shadow-brand-500/25">
-            <span className="font-serif text-2xl">P</span>
-          </div>
-          <div>
-            <div className="text-sm font-semibold tracking-wide text-white">Predovan Propiedades</div>
-            <div className="text-xs text-white/55">La Plata · Buenos Aires</div>
-          </div>
+          <BrandLogo compact />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -66,7 +61,7 @@ export function SiteHeader() {
       <div className={cn('border-t border-white/8 lg:hidden', open ? 'block' : 'hidden')}>
         <div className="container-grid grid gap-2 py-4">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 text-sm text-white/80">
+            <Link key={link.href} href={link.href} className="rounded-2xl bg-white/5 px-4 py-3 text-sm text-white/80">
               {link.label}
             </Link>
           ))}

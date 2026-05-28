@@ -1,15 +1,15 @@
+
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { MapPinned, ShieldCheck, HeartHandshake, Trophy } from 'lucide-react'
+import { MapPinned, ShieldCheck, HeartHandshake, Trophy, Sparkles } from 'lucide-react'
 import { Card } from '@/components/ui/card'
-import { teamMembers, siteData } from '@/lib/data'
+import { siteData } from '@/lib/data'
 
 const values = [
-  { icon: ShieldCheck, title: 'Transparencia', text: 'Proceso claro, comunicación directa y foco comercial responsable.' },
-  { icon: HeartHandshake, title: 'Cercanía', text: 'Acompañamiento humano en cada etapa de compra, venta o alquiler.' },
-  { icon: Trophy, title: 'Profesionalismo', text: 'Presentación premium y criterios sólidos para tomar mejores decisiones.' },
+  { icon: ShieldCheck, title: 'Confianza', text: 'Una historia familiar construida con criterio, seriedad y palabra.' },
+  { icon: HeartHandshake, title: 'Experiencia familiar', text: 'Generaciones de trabajo en el mercado de La Plata, con conocimiento real de cada zona.' },
+  { icon: Sparkles, title: 'Trato personalizado', text: 'Cada cliente recibe atención cercana, humana y orientada a resolver.' },
 ]
 
 export function AboutSection() {
@@ -18,8 +18,13 @@ export function AboutSection() {
       <div className="container-grid relative z-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <div className="text-xs uppercase tracking-[0.28em] text-white/55">Quiénes somos</div>
-          <h2 className="mt-3 font-serif text-4xl sm:text-5xl">Una inmobiliaria con historia y una estética a la altura de sus operaciones.</h2>
-          <p className="mt-4 max-w-2xl text-white/65">{siteData.name} nació y creció acompañando el mercado de La Plata, con atención personalizada, conocimiento del territorio y una vocación real de servicio.</p>
+          <h2 className="mt-3 font-serif text-4xl sm:text-5xl">Fernando Predovan y un legado familiar en el mercado de La Plata.</h2>
+          <p className="mt-4 max-w-2xl text-white/65">
+            Predovan Propiedades es una empresa familiar con décadas de trayectoria en La Plata. Nació del trabajo de generaciones y hoy combina esa calidez con la profesionalidad de una inmobiliaria moderna.
+          </p>
+          <p className="mt-4 max-w-2xl text-white/65">
+            Su fundador y dueño, Fernando Predovan, sostiene una forma de trabajo basada en la confianza, el conocimiento del barrio y un trato personalizado que acompaña cada operación con cercanía y responsabilidad.
+          </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {values.map(({ icon: Icon, title, text }) => (
@@ -33,23 +38,23 @@ export function AboutSection() {
         </div>
 
         <div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {teamMembers.map((member, index) => (
-              <motion.div key={member.name} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45, delay: index * 0.08 }}>
-                <Card className="overflow-hidden border-white/10 bg-white/6">
-                  <div className="relative h-56">
-                    <Image src={member.image} alt={member.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  </div>
-                  <div className="p-4">
-                    <div className="text-lg font-semibold">{member.name}</div>
-                    <div className="text-sm text-white/60">{member.role}</div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="rounded-[32px] border border-white/10 bg-white/6 p-6 shadow-2xl shadow-black/30">
+            <div className="mb-4 text-xs uppercase tracking-[0.24em] text-white/55">Trayectoria</div>
+            <h3 className="text-2xl font-semibold">Años de experiencia y cercanía con el barrio.</h3>
+            <p className="mt-4 text-sm leading-6 text-white/65">
+              La inmobiliaria trabaja con una mirada de largo plazo: conocimiento del mercado local, asesoramiento honesto y una presentación cuidada para transmitir profesionalismo desde el primer contacto.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-white/6 p-4">
+                <div className="text-xs uppercase tracking-[0.24em] text-white/50">Fundador</div>
+                <div className="mt-1 text-xl font-semibold">Fernando Predovan</div>
+              </div>
+              <div className="rounded-2xl bg-white/6 p-4">
+                <div className="text-xs uppercase tracking-[0.24em] text-white/50">Zona base</div>
+                <div className="mt-1 text-xl font-semibold">La Plata</div>
+              </div>
+            </div>
           </div>
-
           <Card className="mt-6 overflow-hidden border-white/10 bg-white/6">
             <div className="grid gap-0 md:grid-cols-[1fr_1fr]">
               <div className="p-6">
