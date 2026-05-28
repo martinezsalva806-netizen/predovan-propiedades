@@ -17,9 +17,9 @@ export default function PropertiesPage() {
           <div className="text-xs uppercase tracking-[0.28em] text-white/55">Catálogo completo</div>
           <h1 className="mt-3 font-serif text-5xl sm:text-6xl">Propiedades activas de Predovan</h1>
           <p className="mt-4 text-white/65">Explorá las fichas activas con fotos reales, datos de referencia y acceso directo a WhatsApp para consultar por cada inmueble.</p>
-          <Link href={siteData.whatsappLink} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
+          <a href="https://wa.me/542213503355?text=Hola!%20Vi%20su%20cat%C3%A1logo%20de%20propiedades%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
             Consultar por WhatsApp <ArrowUpRight className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {featuredProperties.map((property) => (

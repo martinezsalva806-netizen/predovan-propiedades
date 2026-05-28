@@ -22,7 +22,7 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
   const property = propertyBySlug[params.slug]
   if (!property) return notFound()
   const related = similarProperties(property)
-  const whatsappLink = `${siteData.whatsappLink}?text=${encodeURIComponent(`Hola! Quiero consultar por esta propiedad: ${property.title} (${property.address}).`)}`
+  const whatsappLink = `https://wa.me/542213503355?text=${encodeURIComponent(`Hola! Me interesa esta propiedad: ${property.title} - ${property.address}. Me gustaría recibir más información.`)}`
 
   return (
     <main className="bg-[linear-gradient(180deg,rgba(12,15,20,1),rgba(8,10,14,1))] text-white">
@@ -38,9 +38,9 @@ export default function PropertyDetailPage({ params }: { params: { slug: string 
               <Card className="border-white/10 bg-white/6 p-4"><Sparkles className="h-5 w-5 text-brand-400" /><div className="mt-2 text-sm text-white/55">Tipo</div><div className="text-lg font-semibold capitalize">{property.type}</div></Card>
             </div>
             <p className="mt-6 max-w-3xl text-white/65">{property.description}</p>
-            <Link href={whatsappLink} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 hover:brightness-110">
               Consultar por esta propiedad <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
           <Card className="overflow-hidden border-white/10 bg-white/6 p-0">
             <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-1">
