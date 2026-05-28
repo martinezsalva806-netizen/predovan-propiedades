@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 244 239 230;
+  --foreground: 15 19 24;
+  --muted: 230 223 214;
+  --muted-foreground: 87 95 107;
+  --card: 248 245 240;
+  --card-foreground: 15 19 24;
+  --border: 215 206 193;
+  --input: 215 206 193;
+  --ring: 225 34 34;
+  --radius: 1.25rem;
+}
+
+.dark {
+  --background: 11 14 18;
+  --foreground: 246 247 249;
+  --muted: 24 28 35;
+  --muted-foreground: 156 163 175;
+  --card: 18 22 28;
+  --card-foreground: 246 247 249;
+  --border: 43 50 61;
+  --input: 43 50 61;
+  --ring: 225 34 34;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))] antialiased;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(225,34,34,0.08), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.08), transparent 20%),
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent 15%),
+    linear-gradient(180deg, rgba(0,0,0,0.02), transparent 80%);
+}
+
+* {
+  @apply border-[rgb(var(--border))];
+}
+
+::selection {
+  background: rgba(225,34,34,0.25);
+}
+
+.container-grid {
+  @apply container px-4 sm:px-6 lg:px-8;
+}
+
+.glass {
+  @apply backdrop-blur-xl border border-white/10 bg-white/10 shadow-glow;
+}
+
+.dark .glass {
+  @apply bg-white/5 border-white/10;
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-noise {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .mask-fade {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+}
