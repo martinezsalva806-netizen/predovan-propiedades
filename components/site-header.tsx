@@ -28,7 +28,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/8 bg-coal-900/75 backdrop-blur-xl dark:bg-coal-900/70">
       <div className="container-grid flex items-center justify-between py-4">
         <Link href="/#inicio" className="group flex items-center gap-3">
-          <BrandLogo compact />
+          <BrandLogo className="hidden sm:flex" />
+          <BrandLogo compact className="sm:hidden" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

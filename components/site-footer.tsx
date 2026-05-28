@@ -18,9 +18,8 @@ export function SiteFooter() {
       <div className="container-grid py-14">
         <div className="grid gap-10 lg:grid-cols-[1.3fr_0.9fr_1fr]">
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <BrandLogo compact />
-              <div className="text-sm text-white/55">Real Estate · La Plata</div>
+            <div className="mb-5 flex items-center gap-3">
+              <BrandLogo />
             </div>
             <p className="max-w-xl text-sm leading-6 text-white/70">
               Experiencia digital premium para vender, alquilar, tasar y publicar propiedades con una presentación seria, moderna y confiable.

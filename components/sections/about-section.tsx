@@ -1,76 +1,55 @@
 'use client'
 
-import { MapPinned, ShieldCheck, HeartHandshake, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { BookOpen, HeartHandshake, ShieldCheck } from 'lucide-react'
 import { Card } from '@/components/ui/card'
-import { siteData } from '@/lib/data'
 
-const values = [
-  { icon: ShieldCheck, title: 'Confianza', text: 'Una forma de trabajar basada en la palabra, el seguimiento y la responsabilidad.' },
-  { icon: HeartHandshake, title: 'Cercanía real', text: 'Conocer cada calle, cada barrio y cada particularidad del mercado de La Plata.' },
-  { icon: Sparkles, title: 'Herramientas modernas', text: 'Sumar tecnología, presentación visual y procesos claros sin perder el trato humano.' },
+const blocks = [
+  {
+    title: 'Misión',
+    icon: ShieldCheck,
+    text:
+      'Mudarse no es cosa fácil. Bajo este conocimiento, nuestra misión es la de asistir a nuestros clientes en el proceso de búsqueda de vivienda, mediante la prestación de servicios profesionales de calidad.',
+  },
+  {
+    title: 'Nuestra Empresa',
+    icon: BookOpen,
+    text:
+      'PREDOVAN Propiedades es una empresa dinámica y pujante de la ciudad de La Plata, fundada en 2001, con amplia experiencia en la búsqueda, selección, negociación y en la tarea de mediar en alquiler y venta de propiedades. Contamos con todos los medios técnicos y humanos necesarios para prestar un servicio de altísima calidad, basado en la confianza y honradez personal y profesional de todos los integrantes de esta empresa. La relación es directa y personal con todos los clientes que encuentran en nuestros colaboradores a la persona que les facilitará la siempre difícil tarea de encontrar la propiedad de sus sueños o la solución a la necesidad inmobiliaria que en cada momento se le pueda plantear.',
+  },
+  {
+    title: 'Compromiso',
+    icon: HeartHandshake,
+    text:
+      'Nuestro compromiso está basado en el hecho de poder generar relaciones duraderas con un intercambio constante, con el objeto de poder conjugar, en forma exitosa, nuestro conocimiento del mercado con la complejidad y dinámica que el sector inmobiliario presenta en la actualidad, comprometiéndonos a servir los intereses de cada uno de nuestros clientes. Nuestro conocimiento del mercado inmobiliario nos permite procurar en tiempo récord, la propiedad que mejor satisfaga las necesidades de nuestros clientes. Estamos orgullosos de los logros de nuestra empresa y quedamos a la espera de nuevas oportunidades para continuar con nuestro récord de servicio.',
+  },
 ]
 
 export function AboutSection() {
   return (
-    <section id="nosotros" className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(15,19,24,1),rgba(30,34,41,1))] py-20 text-white">
-      <div className="container-grid relative z-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
+    <section id="nosotros" className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(16,18,22,1),rgba(29,32,38,1))] py-20 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(204,0,0,0.16),transparent_24%),radial-gradient(circle_at_90%_0%,rgba(255,255,255,0.05),transparent_18%)]" />
+      <div className="container-grid relative z-10">
+        <div className="mb-10 max-w-3xl">
           <div className="text-xs uppercase tracking-[0.28em] text-white/55">Quiénes somos</div>
-          <h2 className="mt-3 font-serif text-4xl sm:text-5xl">Una historia de familia, barrio y oficio inmobiliario en La Plata.</h2>
-          <p className="mt-4 max-w-2xl text-white/65">
-            Predovan Propiedades nació mucho antes de esta web: empezó con el padre de Fernando Predovan, que hace décadas se ganó la confianza de las familias de La Plata con trabajo serio, trato directo y conocimiento del oficio.
+          <h2 className="mt-3 font-serif text-4xl sm:text-5xl">Una empresa familiar con calidez, profesionalismo y raíces profundas en La Plata.</h2>
+          <p className="mt-4 text-white/65">
+            Predovan Propiedades combina experiencia, cercanía y una forma de trabajo que prioriza la confianza y el trato directo.
           </p>
-          <p className="mt-4 max-w-2xl text-white/65">
-            Fernando creció viendo ese recorrido de cerca, aprendiendo que una operación inmobiliaria no se trata solo de metros y precios, sino de acompañar decisiones importantes con criterio y respeto.
-          </p>
-          <p className="mt-4 max-w-2xl text-white/65">
-            Hoy continúa ese legado familiar con una mirada moderna: herramientas digitales, presentación cuidada y un servicio cálido, profesional y muy arraigado a cada calle de La Plata.
-          </p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {values.map(({ icon: Icon, title, text }) => (
-              <Card key={title} className="border-white/10 bg-white/6 p-5">
-                <Icon className="h-6 w-6 text-brand-400" />
-                <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-white/65">{text}</p>
-              </Card>
-            ))}
-          </div>
         </div>
 
-        <div>
-          <div className="rounded-[32px] border border-white/10 bg-white/6 p-6 shadow-2xl shadow-black/30">
-            <div className="mb-4 text-xs uppercase tracking-[0.24em] text-white/55">El legado</div>
-            <h3 className="text-2xl font-semibold">Padre e hijo, barrio y oficio, tradición y tecnología.</h3>
-            <p className="mt-4 text-sm leading-6 text-white/65">
-              Esa mezcla define a Predovan: una atención cercana, de familia, con una estructura actual que permite responder mejor, mostrar mejor y vender mejor.
-            </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl bg-white/6 p-4">
-                <div className="text-xs uppercase tracking-[0.24em] text-white/50">Empresa</div>
-                <div className="mt-1 text-xl font-semibold">Predovan Propiedades</div>
-              </div>
-              <div className="rounded-2xl bg-white/6 p-4">
-                <div className="text-xs uppercase tracking-[0.24em] text-white/50">Ciudad</div>
-                <div className="mt-1 text-xl font-semibold">La Plata</div>
-              </div>
-            </div>
-          </div>
-          <Card className="mt-6 overflow-hidden border-white/10 bg-white/6">
-            <div className="grid gap-0 md:grid-cols-[1fr_1fr]">
-              <div className="p-6">
-                <h3 className="text-xl font-semibold">Nuestra ubicación</h3>
-                <div className="mt-3 flex items-start gap-3 text-sm text-white/68"><MapPinned className="mt-0.5 h-4 w-4 text-brand-400" /> {siteData.address}</div>
-                <p className="mt-4 text-sm leading-6 text-white/60">Una ubicación estratégica para atender La Plata y alrededores.</p>
-              </div>
-              <iframe
-                title="Mapa Predovan Propiedades"
-                src="https://www.google.com/maps?q=13+n636+La+Plata+Buenos+Aires&output=embed"
-                className="min-h-[280px] w-full border-0"
-                loading="lazy"
-              />
-            </div>
-          </Card>
+        <div className="grid gap-6 lg:grid-cols-3">
+          {blocks.map(({ title, icon: Icon, text }, index) => (
+            <motion.article key={title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45, delay: index * 0.08 }}>
+              <Card className="h-full border-white/10 bg-white/6 p-6 shadow-2xl shadow-black/20 backdrop-blur-sm">
+                <div className="mb-5 inline-flex rounded-2xl bg-brand-500/12 p-3 text-brand-300 ring-1 ring-brand-500/20">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-semibold text-white">{title}</h3>
+                <p className="mt-4 text-sm leading-7 text-white/70">{text}</p>
+              </Card>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
